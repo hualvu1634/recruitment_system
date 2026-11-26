@@ -37,4 +37,8 @@ public class User {
     @Builder.Default
     private Role role = Role.CANDIDATE;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "company_id")
+    private Company company;
+
 }

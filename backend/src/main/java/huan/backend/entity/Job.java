@@ -1,5 +1,7 @@
 package huan.backend.entity;
 
+import java.time.LocalDate;
+
 import huan.backend.enums.City;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -41,6 +43,7 @@ public class Job {
 
     @Column(nullable = false)
     @Builder.Default
+    @Enumerated(EnumType.STRING)
     private City city = City.HANOI;
 
     @Column(nullable = false)
@@ -48,8 +51,8 @@ public class Job {
 
     private Double experience;
 
-    @Column(nullable = false)
-    private String createdDate;
+    @Column(name = "created_date", nullable = false)
+    private LocalDate createdDate;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id", nullable = false)
